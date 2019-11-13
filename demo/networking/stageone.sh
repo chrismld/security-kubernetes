@@ -1,6 +1,7 @@
 #!/bin/bash
-kubectl apply -f ../manifests/customerportal.yaml -n customerportal
-kubectl apply -f ../manifests/customerportal-gateway.yaml -n customerportal
+kubectl config use-context msignite-migration
+kubectl apply -f ../../manifests/customerportal.yaml -n customerportal
+kubectl apply -f ../../manifests/customerportal-gateway.yaml -n customerportal
 
 printf "\nIs Customer Portal running? ...\n"
 kubectl exec -it $(kubectl get pod -l app=customer -o jsonpath='{.items[0].metadata.name}' -n customerportal) -c customer -n customerportal -- curl customer:8080

@@ -1,6 +1,6 @@
 #!/bin/bash
 printf "Create policies to encrypt in-transit ...\n"
-kubectl apply -f ../manifests/enable-tls.yaml -n customerportal
+kubectl apply -f ../../manifests/enable-tls.yaml -n customerportal
 
 printf "\nSend some traffic from a POD ...\n"
 PREFPOD=$(kubectl get pod -l app=preference -o jsonpath='{.items[0].metadata.name}' -n customerportal)
